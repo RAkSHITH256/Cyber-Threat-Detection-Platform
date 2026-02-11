@@ -1,3 +1,9 @@
+## 📸 Preview
+
+![Cyber Threat Detection Platform](docs/mockup_legitimate.png)
+
+
+
 # 🔐 Cyber Threat Detection Platform
 
 A cybersecurity web application designed to help users detect potential online threats such as phishing URLs, scam phone numbers, suspicious messages, and email impersonation attempts.

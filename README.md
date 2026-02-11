@@ -33,8 +33,10 @@ app.py → Main Flask application
 
 ---
 
-## ▶️ How to Run Locally
+### ▶️ How to Run Locally
 
 ```bash
+python -m venv venv
+venv\Scripts\activate
 pip install -r requirements.txt
 python app.py

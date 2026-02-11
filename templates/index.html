@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber Threat Detection Platform</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="disclaimer">
+    ⚠️ AI Model: Results may vary. Verify independently.
+</div>
+
+<div class="container">
+    <h1>🔐 Cyber Threat Detection</h1>
+    <p class="subtitle">Analyze URLs, Messages & Phone Numbers</p>
+
+    <form method="POST" class="card">
+        <label>Input Type</label>
+        <select name="input_type" id="input_type">
+            <option value="url" {% if default_type == 'url' %}selected{% endif %}>URL</option>
+            <option value="message" {% if default_type == 'message' %}selected{% endif %}>Message (SMS)</option>
+            <option value="number" {% if default_type == 'number' %}selected{% endif %}>Phone Number</option>
+            <option value="email" {% if default_type == 'email' %}selected{% endif %}>Email</option>
+        </select>
+
+        <label>Enter Input</label>
+        <textarea name="user_input" placeholder="Paste URL / Message / Phone Number here"></textarea>
+
+        <button type="submit">Analyze Threat</button>
+    </form>
+{% if result %}
+<div class="result fade-in">
+    <h3>Threat Analysis Result</h3>
+
+    <p><strong>Input Type:</strong> {{ result.input_type }}</p>
+    <p><strong>Input:</strong> {{ result.input }}</p>
+
+    <p>
+        <strong>Category:</strong>
+        <span class="badge badge-{{ result.category|lower }}">{{ result.category }}</span>
+    </p>
+
+   <p><strong>Risk Score:</strong> {{ result.risk_score }}%</p>
+<p><strong>Verdict:</strong> {{ result.verdict }}</p>
+
+<div class="meter-container">
+    <div class="meter-label">Threat Level</div>
+    <div class="meter">
+        <div class="meter-fill 
+            {% if result.risk_score < 25 %}low
+            {% elif result.risk_score < 50 %}medium
+            {% else %}high{% endif %}"
+            style="width: {{ result.risk_score }}%;">
+        </div>
+    </div>
+</div>
+
+    <div class="analysis-box">
+        {% if result.explanations %}
+        <div class="analysis-title">Why was this flagged?</div>
+        <ul class="explanation-list">
+            {% for reason in result.explanations %}
+                <li>{{ reason }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if result.mitigations %}
+        <div class="analysis-title" style="margin-top: 12px;">Risk Reductions</div>
+        <ul class="mitigation-list">
+            {% for note in result.mitigations %}
+                <li>{{ note }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <details style="margin-top: 15px;">
+        <summary>Technical Features</summary>
+        <ul>
+            {% for key, value in result.features.items() %}
+                <li><strong>{{ key }}:</strong> {{ value }}</li>
+            {% endfor %}
+        </ul>
+    </details>
+</div>
+{% endif %}
+
+{% if result and result.risk_score >= 60 %}
+<div class="result fade-in" style="border-left-color: #ef4444;">
+    <h3>🚨 Recommended Actions</h3>
+    <ul>
+        <li>❌ Do NOT share OTPs, passwords, or personal details.</li>
+        <li>❌ Avoid clicking any links in this message/email.</li>
+        <li>⚠️ Report this to the National Cyber Crime Portal.</li>
+    </ul>
+
+    <h4>📢 Reporting Channels (India)</h4>
+    <ul>
+        <li><strong>Helpline:</strong> 1930</li>
+        <li><strong>Portal:</strong> <a href="https://cybercrime.gov.in" target="_blank" style="color: #38bdf8;">cybercrime.gov.in</a></li>
+    </ul>
+</div>
+{% endif %}
+
+<div class="footer-note">
+    <strong>Privacy & Limitations Note:</strong><br>
+    Analysis is performed locally on this server. This tool is advisory and provided for educational purposes only. Results do not constitute a final legal or forensic verdict. Always verify sensitive requests through official channels.
+</div>
+
+</div>
+
+
+
+    <script src="{{ url_for('static', filename='script.js') }}?v=3"></script>
+</body>
+</html>

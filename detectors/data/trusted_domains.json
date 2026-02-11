@@ -1,0 +1,22 @@
+{
+    "trusted_domains": [
+        "google.com",
+        "microsoft.com",
+        "apple.com",
+        "amazon.com",
+        "facebook.com",
+        "netflix.com",
+        "airtel.in",
+        "airtel.com",
+        "jio.com",
+        "vi.in",
+        "hdfcbank.com",
+        "icicibank.com",
+        "sbi.co.in",
+        "axisbank.com",
+        "paytm.com",
+        "phonepe.com",
+        "amazon.in",
+        "flipkart.com"
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "high_risk_intents": [
+        "otp",
+        "one time password",
+        "verify your account",
+        "login to",
+        "enter password",
+        "update kyc",
+        "bank details",
+        "aadhaar",
+        "pan card",
+        "credit card",
+        "debit card",
+        "cvv",
+        "pin",
+        "suspicious activity",
+        "unauthorized access"
+    ]
+}

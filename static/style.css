@@ -1,0 +1,391 @@
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ===== BACKGROUND ===== */
+body {
+    height: 100vh;
+    background-color: #020617;
+    background-image: radial-gradient(circle at top, #020617, #000000); /* Default fallback */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    transition: background-image 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #e5e7eb;
+    padding: 20px;
+}
+
+.disclaimer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* Dynamic Background Classes */
+body.bg-url {
+    background-image: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.95)), url('images/bg_url.png');
+}
+
+body.bg-number {
+    background-image: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.95)), url('images/bg_phone.png');
+}
+
+body.bg-message {
+    background-image: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.95)), url('images/bg_message.png');
+}
+
+body.bg-email {
+    background-image: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.95)), url('images/bg_email.png');
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+    width: 440px;
+    animation: fadeSlide 0.8s ease forwards;
+}
+
+/* ===== TITLE ===== */
+h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #38bdf8;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    text-shadow: 0 0 8px rgba(56,189,248,0.4);
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 24px;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: linear-gradient(145deg, #020617, #020617);
+    padding: 26px;
+    border-radius: 14px;
+    box-shadow:
+        0 0 30px rgba(56,189,248,0.15),
+        inset 0 0 10px rgba(255,255,255,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 0 45px rgba(56,189,248,0.25),
+        inset 0 0 12px rgba(255,255,255,0.04);
+}
+
+/* ===== FORM ELEMENTS ===== */
+label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 14px;
+    display: block;
+    color: #cbd5f5;
+}
+
+select,
+textarea {
+    width: 100%;
+    margin-top: 6px;
+    padding: 11px;
+    border-radius: 8px;
+    border: none;
+    outline: 1px solid #1e293b;
+    background: #020617;
+    color: #e5e7eb;
+    transition: outline 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus,
+textarea:focus {
+    outline: 1px solid #38bdf8;
+    box-shadow: 0 0 8px rgba(56,189,248,0.4);
+}
+
+textarea {
+    resize: none;
+    height: 90px;
+}
+
+/* ===== BUTTON ===== */
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    color: #020617;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(56,189,248,0.6);
+}
+
+/* ===== RESULT PANEL ===== */
+.result {
+    margin-top: 22px;
+    padding: 18px;
+    background: #020617;
+    border-radius: 10px;
+    border-left: 4px solid #38bdf8;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.result h3 {
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+/* ===== RISK METER ===== */
+.meter-container {
+    margin-top: 12px;
+}
+
+.meter {
+    width: 100%;
+    height: 14px;
+    background: #020617;
+    border-radius: 10px;
+    overflow: hidden;
+    outline: 1px solid #1e293b;
+}
+
+.meter-fill {
+    height: 100%;
+    width: 0%;
+    animation: grow 1s ease forwards;
+}
+
+/* Risk colors */
+.low {
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+.medium {
+    background: linear-gradient(90deg, #facc15, #eab308);
+}
+
+.high {
+    background: linear-gradient(90deg, #ef4444, #dc2626);
+    animation: pulse 1.5s infinite;
+}
+
+/* ===== DETAILS ===== */
+details {
+    margin-top: 10px;
+}
+
+summary {
+    cursor: pointer;
+    color: #93c5fd;
+    font-size: 14px;
+}
+
+/* ===== REPORT SECTION ===== */
+.result ul {
+    margin-top: 6px;
+    padding-left: 18px;
+}
+
+.result li {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+/* Category Badges */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.badge-legitimate { background: #16a34a22; color: #4ade80; border: 1px solid #16a34a; }
+.badge-promotional { background: #3b82f622; color: #60a5fa; border: 1px solid #3b82f6; }
+.badge-suspicious { background: #eab30822; color: #facc15; border: 1px solid #eab308; }
+.badge-scam { background: #dc262622; color: #f87171; border: 1px solid #dc2626; }
+
+/* Explanation Sections */
+.analysis-box {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #1e293b;
+}
+
+.analysis-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #94a3b8;
+}
+
+.explanation-list, .mitigation-list {
+    list-style: none !important;
+    padding-left: 0 !important;
+}
+
+.explanation-list li::before { content: "⚠️ "; }
+.mitigation-list li::before { content: "✅ "; }
+
+.explanation-list li, .mitigation-list li {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    color: #cbd5e1;
+}
+
+.mitigation-list li { color: #a3e635; }
+
+/* Privacy Footer */
+.footer-note {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 11px;
+    color: #475569;
+    line-height: 1.6;
+}
+
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes grow {
+    from {
+        width: 0%;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 6px rgba(239,68,68,0.5);
+    }
+    50% {
+        box-shadow: 0 0 14px rgba(239, 68, 68, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 6px rgba(239, 68, 68, 0.5);
+    }
+}
+
+/* ===== SIDE AMBIENT PANELS ===== */
+
+body::before,
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Left ambient glow */
+body::before {
+    left: 0;
+    background: radial-gradient(
+        circle at left center,
+        rgba(56, 189, 248, 0.12),
+        transparent 70%
+    );
+}
+
+/* Right ambient glow */
+body::after {
+    right: 0;
+    background: radial-gradient(
+        circle at right center,
+        rgba(14, 165, 233, 0.12),
+        transparent 70%
+    );
+}
+
+/* Ensure main content stays above background */
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== CYBER GRID OVERLAY ===== */
+.grid-overlay {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 75%);
+}
+
+/* ===== LOADER ===== */
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #1e293b;
+    border-bottom-color: #38bdf8;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

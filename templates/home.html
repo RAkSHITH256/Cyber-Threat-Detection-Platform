@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber Threat Detection | Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="topbar">
+    <h1>🔐 Cyber Threat Detection</h1>
+    <p>Protect yourself from online scams & fraud</p>
+</header>
+
+<!-- SAFETY TICKER -->
+<div class="ticker-wrap">
+    <div class="ticker">
+        <div class="ticker-item">⚠️ Never share your OTP with anyone</div>
+        <div class="ticker-item">🔒 Verify URLs before clicking</div>
+        <div class="ticker-item">🚫 Report suspicious calls to 1930</div>
+        <div class="ticker-item">🕵️‍♂️ Don't download attachments from unknown emails</div>
+        <div class="ticker-item">🛡️ Enable 2-Factor Authentication</div>
+        <!-- Duplicate items for seamless scrolling -->
+        <div class="ticker-item">⚠️ Never share your OTP with anyone</div>
+        <div class="ticker-item">🔒 Verify URLs before clicking</div>
+        <div class="ticker-item">🚫 Report suspicious calls to 1930</div>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <h2>Check Before You Trust</h2>
+    <p>Analyze suspicious links, phone numbers, messages, and emails in one place.</p>
+</section>
+
+<!-- FLOATING ACTION BUTTONS -->
+<section class="actions">
+    <div class="action-card" onclick="location.href='/analyze?type=url'">
+        🌐
+        <h3>Check URL</h3>
+        <p>Detect phishing & fake websites</p>
+    </div>
+
+    <div class="action-card" onclick="location.href='/analyze?type=number'">
+        📞
+        <h3>Check Phone Number</h3>
+        <p>Identify scam & fraud calls</p>
+    </div>
+
+    <div class="action-card" onclick="location.href='/analyze?type=message'">
+        💬
+        <h3>Check Message</h3>
+        <p>Detect SMS & WhatsApp scams</p>
+    </div>
+
+    <div class="action-card" onclick="location.href='/analyze?type=email'">
+        📧
+        <h3>Check Email</h3>
+        <p>Detect phishing emails</p>
+    </div>
+</section>
+
+<!-- INFO SECTION -->
+<section class="info">
+    <div class="info-box">
+        <h3>Why this platform?</h3>
+        <p>
+            Cyber scams are increasing every day. This platform helps users
+            identify potential threats before they become victims.
+        </p>
+    </div>
+
+    <div class="info-box">
+        <h3>Threats Covered</h3>
+        <ul>
+            <li>Phishing URLs</li>
+            <li>Fraud phone numbers</li>
+            <li>Scam messages</li>
+            <li>Email impersonation</li>
+        </ul>
+    </div>
+</section>
+
+<!-- HELP & REPORT -->
+<section class="help">
+    <h2>Need Help?</h2>
+    <p>If you suspect a cyber crime, report it immediately.</p>
+
+    <div class="help-cards">
+        <div class="help-card">
+            🚨 <strong>Cyber Crime Helpline</strong>
+            <p>1930</p>
+        </div>
+
+        <div class="help-card">
+            🌐 <strong>Cyber Crime Portal</strong>
+            <p>cybercrime.gov.in</p>
+        </div>
+
+        <div class="help-card">
+            🏢 <strong>Local Police</strong>
+            <p>Nearest Police Station</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2025 Cyber Threat Detection | Educational Security Project</p>
+</footer>
+
+</body>
+</html>
